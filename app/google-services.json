@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1026420960256",
+    "firebase_url": "https://shopperapp-fab61-default-rtdb.firebaseio.com",
+    "project_id": "shopperapp-fab61",
+    "storage_bucket": "shopperapp-fab61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026420960256:android:1eba7c976d755c6aec3ce5",
+        "android_client_info": {
+          "package_name": "cs.uga.edu.finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026420960256-e6eu5g5f5fun27cerekiomc95crirfkp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZfNatig_SpIc5HnvpvOPSP7VxBUi-TV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026420960256-e6eu5g5f5fun27cerekiomc95crirfkp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
