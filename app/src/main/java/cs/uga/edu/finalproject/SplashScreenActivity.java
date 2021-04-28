@@ -21,8 +21,10 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         Button registerButton = findViewById(R.id.signupButton);
+        Button loginButton = findViewById(R.id.loginButton);
 
         registerButton.setOnClickListener(new RegisterButtonClickListener());
+        loginButton.setOnClickListener(new LoginButtonClickListener());
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -35,6 +37,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         @Override
         public void onClick(View v){
             Intent intent = new Intent(v.getContext(), RegistrationActivity.class);
+            v.getContext().startActivity(intent);
+        }
+    }
+
+
+    private class LoginButtonClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v){
+            Intent intent = new Intent(v.getContext(), LoginActivity.class);
             v.getContext().startActivity(intent);
         }
     }
