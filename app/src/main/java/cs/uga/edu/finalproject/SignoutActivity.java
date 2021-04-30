@@ -26,7 +26,7 @@ public class SignoutActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             //Call next page
-            Intent intent = new Intent(SignoutActivity.this, MainActivity.class);
+            Intent intent = new Intent(SignoutActivity.this, SplashScreenActivity.class);
             startActivity(intent);
         }
     }

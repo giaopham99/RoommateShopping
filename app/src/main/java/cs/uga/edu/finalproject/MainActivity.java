@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser != null) {
             // User is signed in
             Log.d("Main", "onAuthStateChanged:signed_in:" + currentUser.getUid());
-            String username = currentUser.getEmail().substring(0, currentUser.getEmail().indexOf("@"));
+            String username = currentUser.getDisplayName();
             //Gets the username before @ sign
             welcomeText.setText("Welcome, " + username+ "!");
 

@@ -10,9 +10,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class RegistrationActivity extends AppCompatActivity {
 
+    private EditText usernameEditText;
     private EditText emailEditText;
     private EditText passwordEditText;
     private Button registerButton;
@@ -22,6 +25,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        usernameEditText = findViewById(R.id.usernameEditText);
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         registerButton = findViewById(R.id.registerButton);
@@ -36,6 +40,7 @@ public class RegistrationActivity extends AppCompatActivity {
         public void onClick(View v){
             final String email = emailEditText.getText().toString();
             final String password = passwordEditText.getText().toString();
+            final String username = usernameEditText.getText().toString();
 
             final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -55,6 +60,20 @@ public class RegistrationActivity extends AppCompatActivity {
                             Log.w("Register", "Could not register account", task.getException());
                         }
                     });
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                    .setDisplayName(username).build();
+            user.updateProfile(profileUpdate)
+            .addOnCompleteListener(RegistrationActivity.this, (task) ->{
+                if(task.isSuccessful()){
+                    Log.d("Register", "Registration: The following username was added: " + username);
+                }
+                else{
+                    Log.w("Register", "Could not add username", task.getException());
+                }
+            });
+
 
         }
     }
