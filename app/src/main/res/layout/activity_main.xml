@@ -13,22 +13,50 @@
         android:layout_marginTop="188dp"
         android:layout_marginBottom="32dp"
         android:text="Welcome, User!"
-        android:textSize="30sp"
+        android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/emailEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="What would you like to look at?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+
+    <Button
+        android:id="@+id/shoppingListButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Shopping List"
+        app:layout_constraintBottom_toTopOf="@+id/recentPurchaseButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Button
+        android:id="@+id/recentPurchaseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recently Purchased"
+        app:layout_constraintBottom_toTopOf="@+id/signoutButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shoppingListButton" />
+
     <Button
         android:id="@+id/signoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginBottom="150dp"
         android:text="Sign Out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/recentPurchaseButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

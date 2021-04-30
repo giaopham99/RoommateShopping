@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/itemName"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:text="Title"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@+id/itemDetails"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/itemDetails"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Description"
+                app:layout_constraintStart_toStartOf="@+id/itemName"
+                app:layout_constraintTop_toBottomOf="@+id/itemName" />
+
+            <TextView
+                android:id="@+id/itemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="200dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Price"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itemDetails" />
+
+            <Button
+                android:id="@+id/updateItemButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="16dp"
+                android:text="Update"
+                app:layout_constraintBottom_toTopOf="@+id/deleteItemButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/deleteItemButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+            <Button
+                android:id="@+id/deleteItemButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="24dp"
+                android:text="Delete"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/updateItemButton" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -2,6 +2,7 @@ package cs.uga.edu.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -52,6 +53,22 @@ public class RegistrationActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
 
                             Log.d("Register", "Created new user with email: " + email);
+
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(username).build();
+                            user.updateProfile(profileUpdate)
+                                    .addOnCompleteListener(RegistrationActivity.this, (update) ->{
+                                        if(update.isSuccessful()){
+                                            Log.d("Register", "Registration: The following username was added: " + username);
+                                        }
+                                        else{
+                                            Log.w("Register", "Could not add username", update.getException());
+                                        }
+                                    });
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("username", username);
+                            startActivity(intent);
                         }
                         else{
                             Toast.makeText(RegistrationActivity.this,
@@ -60,19 +77,6 @@ public class RegistrationActivity extends AppCompatActivity {
                             Log.w("Register", "Could not register account", task.getException());
                         }
                     });
-
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
-                    .setDisplayName(username).build();
-            user.updateProfile(profileUpdate)
-            .addOnCompleteListener(RegistrationActivity.this, (task) ->{
-                if(task.isSuccessful()){
-                    Log.d("Register", "Registration: The following username was added: " + username);
-                }
-                else{
-                    Log.w("Register", "Could not add username", task.getException());
-                }
-            });
 
 
         }

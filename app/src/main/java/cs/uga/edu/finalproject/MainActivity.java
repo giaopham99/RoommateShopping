@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     TextView welcomeText;
     Button signoutButton;
+    Button shoppingListButton;
+    Button recentPurchase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +26,21 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         signoutButton = findViewById(R.id.signoutButton);
         welcomeText = findViewById(R.id.welcomeText);
+        shoppingListButton = findViewById(R.id.shoppingListButton);
+        recentPurchase = findViewById(R.id.recentPurchaseButton);
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
             // User is signed in
             Log.d("Main", "onAuthStateChanged:signed_in:" + currentUser.getUid());
-            String username = currentUser.getDisplayName();
+            String username;
+            if(currentUser.getDisplayName() == null) {
+                Intent intent = getIntent();
+                username = intent.getStringExtra("username");
+            }
+            else
+                username = currentUser.getDisplayName();
             //Gets the username before @ sign
             welcomeText.setText("Welcome, " + username+ "!");
 
@@ -37,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
             // User is signed out
             Log.d("Main", "onAuthStateChanged:signed_out");
         }
-        signoutButton.setOnClickListener(new MainActivity.SignoutButtonClickListener());
+
+        shoppingListButton.setOnClickListener(new ShoppingListButtonClickListener());
+        signoutButton.setOnClickListener(new SignoutButtonClickListener());
     }
 
     private class SignoutButtonClickListener implements View.OnClickListener {
@@ -50,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
             //Call next page
             Intent intent = new Intent(MainActivity.this, SignoutActivity.class);
             startActivity(intent);
+        }
+    }
+
+    private class ShoppingListButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), ShoppingListActivity.class);
+            v.getContext().startActivity(intent);
         }
     }
 }
