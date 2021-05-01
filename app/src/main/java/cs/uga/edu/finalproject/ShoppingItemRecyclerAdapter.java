@@ -23,7 +23,7 @@ public class ShoppingItemRecyclerAdapter extends RecyclerView.Adapter<ShoppingIt
 
     class ItemHolder extends RecyclerView.ViewHolder{
 
-        TextView title;
+        TextView name;
         TextView desc;
         TextView price;
         Button update;
@@ -33,7 +33,7 @@ public class ShoppingItemRecyclerAdapter extends RecyclerView.Adapter<ShoppingIt
             super(itemView);
             context = itemView.getContext();
 
-            title = itemView.findViewById(R.id.itemName);
+            name = itemView.findViewById(R.id.itemName);
             desc = itemView.findViewById(R.id.itemDetails);
             price = itemView.findViewById(R.id.itemPrice);
 
@@ -70,7 +70,7 @@ public class ShoppingItemRecyclerAdapter extends RecyclerView.Adapter<ShoppingIt
     public void onBindViewHolder( ItemHolder holder, int position ) {
         Item item = itemList.get( position );
 
-        holder.title.setText( item.getTitle());
+        holder.name.setText( item.getTitle() );
         holder.desc.setText( item.getDesc() );
         double d = item.getPrice();
         holder.price.setText( "$" + String.format("%.2f",d));
