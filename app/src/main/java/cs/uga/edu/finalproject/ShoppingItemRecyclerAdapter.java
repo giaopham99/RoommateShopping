@@ -37,8 +37,11 @@ public class ShoppingItemRecyclerAdapter extends RecyclerView.Adapter<ShoppingIt
             desc = itemView.findViewById(R.id.itemDetails);
             price = itemView.findViewById(R.id.itemPrice);
 
+            update = itemView.findViewById(R.id.updateItemButton);
+            delete = itemView.findViewById(R.id.deleteItemButton);
+
             update.setOnClickListener(new UpdateButtonClickListener());
-            delete.setOnClickListener(new UpdateButtonClickListener());
+            delete.setOnClickListener(new DeleteButtonClickListener());
         }
     }
 
@@ -69,7 +72,8 @@ public class ShoppingItemRecyclerAdapter extends RecyclerView.Adapter<ShoppingIt
 
         holder.title.setText( item.getTitle());
         holder.desc.setText( item.getDesc() );
-        holder.price.setText( "$" + item.getPrice());
+        double d = item.getPrice();
+        holder.price.setText( "$" + String.format("%.2f",d));
     }
 
     @Override

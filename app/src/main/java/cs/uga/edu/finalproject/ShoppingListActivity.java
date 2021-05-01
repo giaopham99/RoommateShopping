@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,10 +27,18 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     private List<Item> itemList;
 
+    private Button addItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new AddItemButtonClickListener());
+
+        addItem = findViewById(R.id.returnMainButton);
+        addItem.setOnClickListener(new ReturnButtonClickListener());
 
         recyclerView = findViewById( R.id.recyclerView );
 
@@ -58,5 +69,21 @@ public class ShoppingListActivity extends AppCompatActivity {
             }
         } );
 
+    }
+
+    private class AddItemButtonClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v){
+            Intent intent = new Intent(v.getContext(), AddItemActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private class ReturnButtonClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v){
+            Intent intent = new Intent(v.getContext(), MainActivity.class);
+            startActivity(intent);
+        }
     }
 }

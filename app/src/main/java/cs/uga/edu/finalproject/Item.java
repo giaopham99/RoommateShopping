@@ -4,12 +4,20 @@ public class Item {
     String title;
     double price;
     String description;
+    String boughtBy;
+
+    public Item(){
+        title ="";
+        price = 0;
+        description = "";
+        boughtBy ="";
+    }
 
     public Item(String title, String desc, double price) {
         this.title = title;
         this.description = desc;
-        int temp = (int)price*100;
-        this.price = temp/100;
+        this.price = Math.round(price * 100);
+        this.price /= 100;
     }
 
     public String getTitle() {
@@ -30,7 +38,13 @@ public class Item {
 
     public void setPrice(double price) {
         int temp = (int)price*100;
-        this.price = temp/100;
-        this.price = price;
+        this.price = Math.round(price * 100);
+        this.price /= 100;
     }
+
+    public String getUser() {
+        return title;
+    }
+
+    public void setUser(String username) { this.boughtBy = username; }
 }
