@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,6 +28,7 @@ public class RecentlyPurchasedActivity extends AppCompatActivity {
     private RecyclerView.Adapter recyclerAdapter;
     private List<Item> itemList;
     private Button returnButton;
+    private Button calculateButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class RecentlyPurchasedActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         returnButton = findViewById(R.id.returnMainButton3);
         returnButton.setOnClickListener(new ReturnButtonClickListener());
+        calculateButton = findViewById(R.id.calculateButton);
+        calculateButton.setOnClickListener(new CalculateButtonClickListener());
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         //read from recentlyPurchasedList
@@ -48,7 +52,7 @@ public class RecentlyPurchasedActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Item item = postSnapshot.getValue(Item.class);
-                     itemList.add(item);
+                    itemList.add(item);
                 }
                 //reverse it to get the latest items first
                 Collections.reverse(itemList);
@@ -61,6 +65,15 @@ public class RecentlyPurchasedActivity extends AppCompatActivity {
                 System.out.println("The read failed: " + databaseError.getMessage());
             }
         });
+    }
+
+    private class CalculateButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v){
+            Intent intent = new Intent(RecentlyPurchasedActivity.this, CalculateActivity.class);
+            intent.putExtra("items", (Parcelable) itemList);
+            startActivity(intent);
+        }
     }
 
     public RecyclerView.Adapter getRecycler()

@@ -78,7 +78,6 @@ public class Item implements Parcelable {
     }
 
     public void setPrice(double price) {
-        int temp = (int)price*100;
         this.price = Math.round(price * 100);
         this.price /= 100;
     }

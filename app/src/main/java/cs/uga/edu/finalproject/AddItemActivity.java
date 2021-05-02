@@ -86,7 +86,7 @@ public class AddItemActivity<TextEdit> extends AppCompatActivity {
                                 }
 
                                 //enter the stuff into the database
-                                String user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                                String user = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
                                 item.setUser(user);
                                 item.setPrice(Double.parseDouble(userInput));
                                 myRef.push().setValue(item)
