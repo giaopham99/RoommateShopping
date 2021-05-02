@@ -119,7 +119,7 @@ public class UpdateItemActivity extends AppCompatActivity {
 									myRef = database.getReference("shoppingList");
 									Query newlyPurchasedRemoval = myRef.orderByChild("title").equalTo(item.getTitle()); //find old item
 
-									//Query to find item, then get the item's ID, then DELETE the old one
+									//Query to find item, then DELETE the old one
 									ValueEventListener value = new ValueEventListener() {
 										@Override
 										public void onDataChange(@NonNull DataSnapshot sh) {
@@ -135,7 +135,6 @@ public class UpdateItemActivity extends AppCompatActivity {
 									//attach it
 									newlyPurchasedRemoval.addListenerForSingleValueEvent(value);
 
-									// add the OLD_ID to new item's ID
 									// move to recentlyPurchasedList
 									String user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 									myRef = database.getReference("recentlyPurchasedList");
@@ -195,7 +194,7 @@ public class UpdateItemActivity extends AppCompatActivity {
 			} else {
 				DatabaseReference myRef;
 				if (previouslyChecked == true) {
-					//if the button has been unchecked, then find the ID and remove it
+					//if the button has been unchecked, find old item and remove it
 					myRef = database.getReference("recentlyPurchasedList");
 					Query deleteQuery = myRef.orderByChild("title").equalTo(item.getTitle());
 					deleteQuery.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -215,7 +214,7 @@ public class UpdateItemActivity extends AppCompatActivity {
 					//Is newly checked
 					Query newlyPurchasedRemoval = myRef.orderByChild("title").equalTo(item.getTitle()); //find old item
 
-					//Query to find item, then get the item's ID, then DELETE the old one from recentlyPurchased
+					//Query to find item, then DELETE the old one from recentlyPurchased
 					ValueEventListener value = new ValueEventListener() {
 						@Override
 						public void onDataChange(@NonNull DataSnapshot sh) {
@@ -231,7 +230,6 @@ public class UpdateItemActivity extends AppCompatActivity {
 					//attach it
 					newlyPurchasedRemoval.addListenerForSingleValueEvent(value);
 
-					// add the OLD_ID to new item's ID
 					// move to shoppingList
 					//String user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 					//Don't need user here because it's not purchased anymore
