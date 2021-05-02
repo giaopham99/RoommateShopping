@@ -61,7 +61,11 @@ public class RecentlyPurchasedActivity extends AppCompatActivity {
                 System.out.println("The read failed: " + databaseError.getMessage());
             }
         });
+    }
 
+    public RecyclerView.Adapter getRecycler()
+    {
+        return this.recyclerAdapter;
     }
 
     /**
@@ -74,4 +78,6 @@ public class RecentlyPurchasedActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+
 }
