@@ -67,11 +67,12 @@ public class RecentlyPurchasedActivity extends AppCompatActivity {
         });
     }
 
+    /**Fix this**/
     private class CalculateButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v){
             Intent intent = new Intent(RecentlyPurchasedActivity.this, CalculateActivity.class);
-            intent.putExtra("items", (Parcelable) itemList);
+            intent.putParcelableArrayListExtra("items", (ArrayList<? extends Parcelable>) itemList);
             startActivity(intent);
         }
     }

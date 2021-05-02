@@ -20,7 +20,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class CalculateActivity extends AppCompatActivity {
-
     private List<String> userList = new ArrayList<String>();
     private List<Item> itemList;
 
@@ -32,14 +31,14 @@ public class CalculateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate);
-
-        itemList = (ArrayList<Item>) getIntent().getSerializableExtra("itemList");
+        itemList = getIntent().getParcelableArrayListExtra("items");
 
         for(int i=0; i<itemList.size();i++)
         {
             if(!userList.contains(itemList.get(i).getUser()))
                 userList.add(itemList.get(i).getUser());
         }
+
         totalCost = findViewById(R.id.totalCost);
         avgCost = findViewById(R.id.avgCost);
         totalSpent = findViewById(R.id.totalSpent);
