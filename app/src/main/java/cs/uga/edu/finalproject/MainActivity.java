@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         shoppingListButton.setOnClickListener(new ShoppingListButtonClickListener());
         signoutButton.setOnClickListener(new SignoutButtonClickListener());
+        recentPurchase.setOnClickListener(new RecentlyPurchasedButtonClickListener());
     }
 
     private class SignoutButtonClickListener implements View.OnClickListener {
@@ -62,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
 
             //Call next page
             Intent intent = new Intent(MainActivity.this, SignoutActivity.class);
+            startActivity(intent);
+        }
+    }
+    private class RecentlyPurchasedButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, RecentlyPurchasedActivity.class);
             startActivity(intent);
         }
     }

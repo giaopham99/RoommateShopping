@@ -32,8 +32,6 @@ public class RegistrationActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.registerButton);
 
         registerButton.setOnClickListener(new RegisterButtonClickListener());
-
-
     }
 
     private class RegisterButtonClickListener implements View.OnClickListener{

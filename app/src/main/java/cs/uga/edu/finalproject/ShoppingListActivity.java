@@ -19,15 +19,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingListActivity extends AppCompatActivity {
+public class ShoppingListActivity extends AppCompatActivity{
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter recyclerAdapter;
-
     private List<Item> itemList;
-
     private Button addItem;
+    ShoppingItemRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,6 @@ public class ShoppingListActivity extends AppCompatActivity {
         itemList = new ArrayList<Item>();
 
         myRef.addListenerForSingleValueEvent( new ValueEventListener() {
-
             @Override
             public void onDataChange( DataSnapshot snapshot ) {
                 for( DataSnapshot postSnapshot: snapshot.getChildren() ) {
@@ -59,7 +57,7 @@ public class ShoppingListActivity extends AppCompatActivity {
                     itemList.add(item);
                 }
 
-                recyclerAdapter = new ShoppingItemRecyclerAdapter( itemList );
+                recyclerAdapter = new ShoppingItemRecyclerAdapter(itemList, true );
                 recyclerView.setAdapter( recyclerAdapter );
             }
 
