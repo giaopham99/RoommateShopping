@@ -20,12 +20,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class CalculateActivity extends AppCompatActivity {
-    private List<String> userList = new ArrayList<String>();
-    private List<Item> itemList;
+
+    private List<User> userList = new ArrayList<User>();
+    private List<Item> itemList = new ArrayList<Item>();
 
     TextView totalCost;
     TextView avgCost;
     TextView totalSpent;
+    TextView totalPaid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +35,29 @@ public class CalculateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calculate);
         itemList = getIntent().getParcelableArrayListExtra("items");
 
-        for(int i=0; i<itemList.size();i++)
-        {
-            if(!userList.contains(itemList.get(i).getUser()))
-                userList.add(itemList.get(i).getUser());
-        }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users");
+
+        myRef.addListenerForSingleValueEvent( new ValueEventListener() {
+
+            @Override
+            public void onDataChange( DataSnapshot snapshot ) {
+                for( DataSnapshot postSnapshot: snapshot.getChildren() ) {
+                    User user = postSnapshot.getValue(User.class);
+                    userList.add(user);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getMessage());
+            }
+        } );
 
         totalCost = findViewById(R.id.totalCost);
         avgCost = findViewById(R.id.avgCost);
         totalSpent = findViewById(R.id.totalSpent);
+        totalPaid = findViewById(R.id.totalPaid);
 
         double total = calculateTotal(itemList);
         totalCost.setText("$" + String.format("%.2f", total));
@@ -49,6 +65,15 @@ public class CalculateActivity extends AppCompatActivity {
 
         String eachMemberPayment = "";
 
+        for(int i=0; i< userList.size();i++){
+            String name = userList.get(i).getUsername();
+            double memberTotal = calculateEachTotal(name);
+            userList.get(i).setPaid(memberTotal);
+            eachMemberPayment += name + " spent a total of $" + String.format("%.2f", memberTotal) + "/n";
+        }
+        totalSpent.setText(eachMemberPayment);
+
+        //totalPaid.setText()
 
     }
 
