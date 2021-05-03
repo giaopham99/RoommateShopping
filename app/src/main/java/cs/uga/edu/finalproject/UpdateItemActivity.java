@@ -136,7 +136,7 @@ public class UpdateItemActivity extends AppCompatActivity {
 									newlyPurchasedRemoval.addListenerForSingleValueEvent(value);
 
 									// move to recentlyPurchasedList
-									String user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+									String user = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 									myRef = database.getReference("recentlyPurchasedList");
 									new_item.setUser(user);
 									new_item.setPrice(Double.parseDouble(userInput));

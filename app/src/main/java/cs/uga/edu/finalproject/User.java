@@ -4,7 +4,7 @@ public class User {
     String username;
     String email;
     double paid = 0;
-    double owes = 0;
+    double amountReturned = 0;
 
     public User(){
         username = null;
@@ -16,12 +16,12 @@ public class User {
         this.email = email;
     }
 
-    public void setOwes(double owes){
-        this.owes = Math.round(owes * 100);
-        this.owes /= 100;
+    public void setAmountReturned(double amount){
+        this.amountReturned = Math.round(amount * 100);
+        this.amountReturned /= 100;
     }
 
-    public double getOwes(){return this.owes;}
+    public double getAmountReturned(){return this.amountReturned;}
 
     public void setPaid(double owed){
         this.paid = Math.round(owed * 100);
