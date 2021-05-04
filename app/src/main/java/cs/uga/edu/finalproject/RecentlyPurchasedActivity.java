@@ -67,7 +67,7 @@ public class RecentlyPurchasedActivity extends AppCompatActivity {
         });
     }
 
-    /**Fix this**/
+    /**Calculates the costs**/
     private class CalculateButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v){

@@ -133,7 +133,7 @@ public class AddItemActivity<TextEdit> extends AppCompatActivity {
         }
     }
 
-
+    /** Cancels the attempt to add new item**/
     private class CancelButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {

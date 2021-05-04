@@ -202,6 +202,7 @@ public class CalculateActivity extends AppCompatActivity {
         }
     }
 
+    /** Dialog to notify users that they have settled the cost **/
     public static class AlertDialogFragment extends DialogFragment {
         public static AlertDialogFragment newInstance() {
             return new AlertDialogFragment();

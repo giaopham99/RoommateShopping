@@ -87,6 +87,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                             Log.w("Register", "Could not add username", update.getException());
                                         }
                                     });
+                            //Automatically log in
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             intent.putExtra("username", username);
                             startActivity(intent);
