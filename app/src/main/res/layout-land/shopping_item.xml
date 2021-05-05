@@ -14,50 +14,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/itemName"
-                android:layout_width="30dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="24dp"
-                android:text="Title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintEnd_toStartOf="@+id/checkBox"
-                app:layout_constraintHorizontal_bias="0.007"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <CheckBox
                 android:id="@+id/checkBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="4dp"
+                android:layout_marginEnd="84dp"
+                android:layout_marginRight="84dp"
                 android:text="Purchased"
                 app:layout_constraintBottom_toTopOf="@+id/updateItemButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/itemPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintBottom_toTopOf="@+id/itemDetails"
-                app:layout_constraintStart_toStartOf="@+id/itemDetails"
-                app:layout_constraintTop_toBottomOf="@+id/itemName" />
-
-            <TextView
-                android:id="@+id/itemDetails"
-                android:layout_width="132dp"
-                android:layout_height="60dp"
-                android:text="Description"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/itemPrice"
-                app:layout_constraintVertical_bias="1.0" />
 
             <Button
                 android:id="@+id/updateItemButton"
@@ -84,9 +51,46 @@
                 app:backgroundTint="#E91E63"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.916"
+                app:layout_constraintHorizontal_bias="0.769"
                 app:layout_constraintStart_toEndOf="@+id/itemDetails"
                 app:layout_constraintTop_toBottomOf="@+id/updateItemButton" />
+
+            <TextView
+                android:id="@+id/itemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:text="Price"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintBottom_toTopOf="@+id/itemDetails"
+                app:layout_constraintStart_toStartOf="@+id/itemDetails"
+                app:layout_constraintTop_toBottomOf="@+id/itemName" />
+
+            <TextView
+                android:id="@+id/itemDetails"
+                android:layout_width="132dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginLeft="68dp"
+                android:text="Description"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itemPrice"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/itemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toStartOf="@+id/checkBox"
+                app:layout_constraintHorizontal_bias="0.145"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
